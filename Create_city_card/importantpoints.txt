@@ -2,6 +2,7 @@ In frontend -> __tests__ -> package.json file I have removed the line
 
 "scripts": {
          "test": "git config --local merge.autoselect-nonempty.driver 'chmod +x __CRIO__/merge_drivers/autoselect-nonempty && __CRIO__/merge_drivers/autoselect-nonempty %O %A %B %P' && NODE_ICU_DATA=node_modules/full-icu TZ=Asia/Kolkata jest --verbose ./modules"
+
 }, 
 
 and added 
