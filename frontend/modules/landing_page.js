@@ -27,12 +27,13 @@ async function fetchCities() {
   try{
   let rawData = await fetch(config.backendEndpoint+"/cities");
   let citiesData = await rawData.json();
-  // console.log(citiesData);
+  // console.log(citiesData);'
+  return citiesData;
   }
   catch(err){
     console.log("Fetching the data was failed");
   }
-  return citiesData;
+  
 }
 
 
