@@ -24,9 +24,14 @@ async function init() {
 async function fetchCities() {
   // TODO: MODULE_CITIES
   // 1. Fetch cities using the Backend API and return the data
+  try{
   let rawData = await fetch(config.backendEndpoint+"/cities");
   let citiesData = await rawData.json();
   // console.log(citiesData);
+  }
+  catch(err){
+    console.log("Fetching the data was failed");
+  }
   return citiesData;
 }
 
