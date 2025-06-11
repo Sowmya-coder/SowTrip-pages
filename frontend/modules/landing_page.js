@@ -31,7 +31,7 @@ async function fetchCities() {
   return citiesData;
   }
   catch(err){
-    console.log("Fetching the data was failed");
+    return null;
   }
   
 }
