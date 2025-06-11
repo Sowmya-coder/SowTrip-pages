@@ -39,10 +39,13 @@ footer {
 
 .content {
   padding: 100px 0px;
-  /* display: flex;
-  flex-wrap: wrap; */
+  display: flex;
+  flex-wrap: wrap;
 }
-.tile {
+.tile{
+  height:100%;
+}
+.tile a{
   position: relative;
   height: 100%;
   /* width: calc(25% - 20px); */
@@ -51,32 +54,40 @@ footer {
   cursor: pointer;
   -webkit-transition: 0.2s all;
   overflow: hidden;
-
-  display: flex;
+  
+  display: block;
+  /* display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  align-items: center;
+  align-items: center; */
 
 }
-.tile img {
+.tile a img {
   width: 100%;
   height: 100%;
   border-radius: 8px;
   -webkit-transition: 0.2s all;
+    object-fit: cover;
   /* -webkit-filter: brightness(70%); */
 }
-.tile img:hover {
+.tile a img:hover {
   -webkit-filter: brightness(50%);
   transform: scale(1.1);
 }
 
 .tile-text {
   position: absolute;
+  bottom: 0;
+  /* top:0; */
+  left:0;
+  width: 100%;
   z-index: 1;
   text-transform: uppercase;
   letter-spacing: 2px;
-  text-align: center;
+  text-align: center !important;
 }
+
+
 .hero-image {
   /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
