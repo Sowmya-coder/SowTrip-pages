@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../../css/styles.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-</head>
+    </head>
 
 <body>
     <!-- Navigation bar -->
@@ -112,7 +112,6 @@
 
         // Declaring global variable adventure
         let adventures;
-
         //Checks if filters are available in local storage and sets the value accordingly
         // The structure of "filters" object is { duration : "6-10", category : [] }, which basically means duration is single-value filter and category is multi-value filter
 
@@ -147,15 +146,23 @@
             // TODO: MODULE_FILTERS
             // 1. Change the DOM to show the selected duration filter. Use the provided input event
             // 2. Invoke saveFiltersToLocalStorage here
-
+            document.getElementById("data").textContent = "";
+            filters.duration=event.target.value;
+            let filteredAdventures = filterFunction(adventures, filters);
+             addAdventureToDOM(filteredAdventures);
+            saveFiltersToLocalStorage(filters);
         }
-
         //executed when clear button is clicked on duration filter dropdown
         function clearDuration(event) {
             // TODO: MODULE_FILTERS
             // 1. Change the DOM to clear the Duration filter. Refer clearCategory() below
             // 2. Invoke saveFiltersToLocalStorage here
-
+            document.getElementById("duration-select").selectedIndex = 0;
+            document.getElementById("data").textContent = "";
+            filter.duration="";
+            let filteredAdventures = filterFunction(adventures, filters);
+            addAdventureToDOM(filteredAdventures);
+            saveFiltersToLocalStorage(filters);
         }
 
 
@@ -204,6 +211,7 @@
         window.clearDuration = clearDuration;
         window.clearCategory = clearCategory;
     </script>
+
 </body>
 
 </html>
