@@ -151,9 +151,9 @@ function getFiltersFromLocalStorage() {
   // TODO: MODULE_FILTERS
   // 1. Get the filters from localStorage and return String read as an object
 
-  // let getfitlersFromLocalstorage = JSON.parse(localStorage.getItem(filters));
+  let getfitlersFromLocalstorage = JSON.parse(localStorage.getItem("filters"));
   // Place holder for functionality to work in the Stubs
-  return JSON.parse(localStorage.getItem("filters"));
+  return getfitlersFromLocalstorage;
 }
 
 //Implementation of DOM manipulation to add the following filters to DOM :

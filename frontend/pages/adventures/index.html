@@ -182,6 +182,7 @@
             generateFilterPillsAndUpdateDOM(filters);
             let filteredAdventures = filterFunction(adventures, filters);
             addAdventureToDOM(filteredAdventures);
+            saveFiltersToLocalStorage(filters);
 
             // TODO: MODULE_FILTERS
             // 1. Invoke saveFiltersToLocalStorage here
@@ -195,6 +196,7 @@
             filters["category"] = [];
             let filteredAdventures = filterFunction(adventures, filters);
             addAdventureToDOM(filteredAdventures);
+            saveFiltersToLocalStorage(filters);
 
             // TODO: MODULE_FILTERS
             // 1. Invoke saveFiltersToLocalStorage here
