@@ -159,7 +159,7 @@
             // 2. Invoke saveFiltersToLocalStorage here
             document.getElementById("duration-select").selectedIndex = 0;
             document.getElementById("data").textContent = "";
-            filter.duration="";
+            filters.duration="";
             let filteredAdventures = filterFunction(adventures, filters);
             addAdventureToDOM(filteredAdventures);
             saveFiltersToLocalStorage(filters);

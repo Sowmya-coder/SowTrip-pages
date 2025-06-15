@@ -1,8 +1,8 @@
 import config from "../conf/index.js";
 
-document.addEventListener("DOMContentLoaded", function() {
-  init();
-});
+// document.addEventListener("DOMContentLoaded", function() {
+//   init();
+// });
 
 async function init() {
   //Fetches list of all cities along with their images and description
@@ -11,11 +11,9 @@ async function init() {
   //-------------------------------------------
   let cities = await fetchCities();
   //Updates the DOM with the cities
-  // getData.innerHTML="";
   cities.forEach((key) => {
     addCityToDOM(key.id, key.city, key.description, key.image);
   });
-  // console.log(cities);
   return cities;
 }
 
@@ -42,19 +40,20 @@ function addCityToDOM(id, city, description, image) {
   // TODO: MODULE_CITIES
   // 1. Populate the City details and insert those details into the DOM
   let getData = document.getElementById("data");
-  
-  let cityCard= `<div class="col-lg-3 col-md-6 col-12 mb-4">
+  console.log(getData);
+  getData.innerHTML +=`<div class="col-lg-3 col-md-6 col-12 mb-4">
+  <a href="pages/adventures/?city=${id}" id="${id}">
       <div class="card tile"> 
-        <a href="pages/adventures/?city=${id}" id="${id}">
           <img src="${image}" class="card-img-top" alt="${city}">
           <div class="card-body tile-text">
           <h5 class="card-title">${city}</h5>
           <p class="card-text">${description}</p>
         </div>
-        </a>
       </div>
+      </a>
     </div>`;
-  getData.innerHTML += cityCard;
+  // getData.innerHTML += cityCard;
+  console.log(getData);
 }
 
 export { init, fetchCities, addCityToDOM };

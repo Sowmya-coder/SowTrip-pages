@@ -1,42 +1,48 @@
 
 import config from "../conf/index.js";
 
-let search ="?city=bengaluru";
+document.addEventListener("DOMContentLoaded", function () {
+        getCityFromURL();
+      });
+
+// let search ="?city=bengaluru";
 //Implementation to extract city from query params
 function getCityFromURL(search) {
   // TODO: MODULE_ADVENTURES
   // 1. Extract the city id from the URL's Query Param and return it
-  let urlParam = new URLSearchParams(search);
-  let cityId = urlParam.get("city");
-  // console.log(cityId);
-  return cityId;
+  let urlParam = new URLSearchParams(location.search);
+  let cityName = urlParam.get("city");
+  // fetchAdventures(cityName);
+  return cityName;
 
 }
 // getCityFromURL("?city=bengaluru");
 
 //Implementation of fetch call with a paramterized input based on city
-async function fetchAdventures(city) {
+async function fetchAdventures(cityName) {
   // TODO: MODULE_ADVENTURES
   // 1. Fetch adventures using the Backend API and return the data
   try{
-    let cityName = getCityFromURL(search);
+    // let cityName = getCityFromURL(search);
     let rawData = await fetch(config.backendEndpoint + "/adventures?city="+cityName );
     let fetchingData = await rawData.json();
     // console.log(fetchingData);
-    return fetchingData;
+    addAdventureToDOM(fetchingData);
+    // return fetchingData;
   }catch(err){
     return null;
   } 
 }
-let adventures = await fetchAdventures(getCityFromURL(search));
-// console.log(adventures);
+
 
 //Implementation of DOM manipulation to add adventures for the given city from list of adventures
 function addAdventureToDOM(adventures) {
   // TODO: MODULE_ADVENTURES
   // 1. Populate the Adventure Cards and insert those details into the DOM
    let inputData = document.getElementById("data");
+   console.log(inputData);
   for(let i=0;i<adventures.length;i++){
+    
    let adventureCard = `
                 <div class="col-xl-3 col-lg-4 col-md-6 col-12 g-1 mb-4"><a href="detail/?adventure=${adventures[i].id}" >  
                 <div class="card activity-card card-img-top" style="width: 18rem;">
@@ -60,6 +66,7 @@ function addAdventureToDOM(adventures) {
   }
 }
 
+//-----------------------------------------------------------------------------
 document.querySelector("#newAdventureBtn").addEventListener("click",function(){
   addNewButton();
 })
