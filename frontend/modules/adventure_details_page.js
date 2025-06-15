@@ -82,15 +82,13 @@ function addBootstrapPhotoGallery(images) {
 return carouselItemParent;
 }
 
-
-
-
-
 //Implementation of conditional rendering of DOM based on availability
 function conditionalRenderingOfReservationPanel(adventure) {
   // TODO: MODULE_RESERVATIONS
   // 1. If the adventure is already reserved, display the sold-out message.
+  // if(adventure.reservation==true){
 
+  // }
 }
 
 //Implementation of reservation cost calculation based on persons
