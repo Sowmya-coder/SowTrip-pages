@@ -4,9 +4,9 @@ import config from "../conf/index.js";
 function getAdventureIdFromURL(search) {
   // TODO: MODULE_ADVENTURE_DETAILS
   // 1. Get the Adventure Id from the URL
-   let urlParam = new URLSearchParams(location.search);
+   let urlParam = new URLSearchParams(search);
   let adventureId = urlParam.get("adventure");
-  console.log(adventureId);
+  // console.log(adventureId);
   // fetchAdventureDetails(adventureId);
   return adventureId;
   // Place holder for functionality to work in the Stubs
