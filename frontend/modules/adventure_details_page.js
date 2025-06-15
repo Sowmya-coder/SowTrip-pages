@@ -66,19 +66,22 @@ function addBootstrapPhotoGallery(images) {
   console.log(images);
 
   const carouselItemParent = document.getElementById("imagesItems");  
-  images.forEach((images, idx) => {
+  // images.forEach((images, idx) => {
+    for(let i=0;i<images.length;i++){
     const carouseItemElement = document.createElement("div");
 
     // Set as active if id is 0 i.e, first element
-    idx === 0
+    // idx === 0
+    i===0
       ? carouseItemElement.classList.add("carousel-item", "h-100", "active")
       : carouseItemElement.classList.add("carousel-item", "h-100");
 
-    carouseItemElement.innerHTML = `<img src=${images} class="w-100 h-100" alt="" style="object-fit:cover">`;
+    carouseItemElement.innerHTML = `<img src=${images[i]} class="w-100 h-100" alt="" style="object-fit:cover">`;
     // console.log(carouseItemElement);
 
     carouselItemParent.append(carouseItemElement);
-  });
+  // });
+    }
 return carouselItemParent;
 }
 
