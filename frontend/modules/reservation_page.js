@@ -26,11 +26,12 @@ function addReservationToTable(reservations) {
   try{
   let noReservationBanner = document.getElementById("no-reservation-banner");
   let reservationTableBody = document.getElementById("reservation-table");
-  if (reservations.length >= 0) {
+  if (reservations = []) {
+    noReservationBanner.style.display = "block";
+    reservationTableParent.style.display = "none";
+      } else {
     noReservationBanner.style.display = "none";
     reservationTableParent.style.display = "block";
-  
-
     for(let i=0;i<reservations.length;i++){
         let givenDate = reservations[i].date;
         let dates = givenDate.split('-'); //dd/mm/yyyy;
@@ -53,9 +54,7 @@ function addReservationToTable(reservations) {
                             <td style="display:flex; gap:5px"><div class="reservation-visit-button"> <a href = "../detail?adventure=${reservations[i].adventure}">View Adventure</a></div></td>                
                         </tr>`
   }
-  } else {
-    noReservationBanner.style.display = "block";
-    reservationTableParent.style.display = "none";
+
   }   
 }
 catch(err){
