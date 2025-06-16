@@ -16,6 +16,13 @@ async function fetchReservations() {
   // return null;
 }
 
+const cancelReservation = (id) => {};
+document.querySelector(".table").addEventListener("click",(e)=>{
+  if (e.target.className === "reservation-cancel-button"){
+    cancelReservation(e.target.id);
+  }
+})
+
 //Function to add reservations to the table. Also; in case of no reservations, display the no-reservation-banner, else hide it.
 function addReservationToTable(reservations) {
   // TODO: MODULE_RESERVATIONS
@@ -26,12 +33,13 @@ function addReservationToTable(reservations) {
   try{
   let noReservationBanner = document.getElementById("no-reservation-banner");
   let reservationTableBody = document.getElementById("reservation-table");
- if (reservations.length === 0) {
-      noReservationBanner.style.display = "block";
-      reservationTableParent.style.display = "none";
-    } else {
+ if (reservations.length > 0) {
       noReservationBanner.style.display = "none";
       reservationTableParent.style.display = "block";
+    } else {
+      noReservationBanner.style.display = "block";
+      reservationTableParent.style.display = "none";
+    }
 
     for(let i=0;i<reservations.length;i++){
         let givenDate = reservations[i].date;
@@ -54,7 +62,6 @@ function addReservationToTable(reservations) {
                             <td style="gap:5px">${formatTime}</td>
                             <td style="display:flex; gap:5px"><div class="reservation-visit-button"> <a href = "../detail?adventure=${reservations[i].adventure}">View Adventure</a></div></td>                
                         </tr>`
-  }
   }   
 }
 catch(err){
