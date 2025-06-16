@@ -26,10 +26,13 @@ function addReservationToTable(reservations) {
   try{
   let noReservationBanner = document.getElementById("no-reservation-banner");
   let reservationTableBody = document.getElementById("reservation-table");
-  if (reservations != []){
+  if (reservations.length > 0) {
     noReservationBanner.style.display = "none";
-  }else{
+    reservationTableParent.style.display = "block";
+  } else {
     noReservationBanner.style.display = "block";
+    reservationTableParent.style.display = "none";
+    return; // Exit early to avoid rendering
   }
 
     for(let i=0;i<reservations.length;i++){

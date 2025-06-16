@@ -105,10 +105,11 @@ function conditionalRenderingOfReservationPanel(adventure) {
   if(adventure.reserved==false){
     soldOutId.style.display = "none";
     reservationPerHeadCost.style.display = "block";
+    reservationAvailable.style.display = "block";
     reservationPerHeadCost.textContent = adventure.costPerHead;
   }else{
     reservationAvailable.style.display = "none";
-    soldOutId.style.display = "none";
+    soldOutId.style.display = "block";
     // reservationPerHeadCost.textContent =  0;
 
   }
@@ -120,8 +121,8 @@ function conditionalRenderingOfReservationPanel(adventure) {
 function calculateReservationCostAndUpdateDOM(adventure, persons) {
   // TODO: MODULE_RESERVATIONS
   // 1. Calculate the cost based on number of persons and update the reservation-cost field
- let reservationPerHeadCost = document.getElementById("reservation-person-cost").textContent;
-  let reservationCost = reservationPerHeadCost * persons;
+//  let reservationPerHeadCost = document.getElementById("reservation-person-cost").textContent;
+  let reservationCost = adventure.costPerHead * persons;
   let reservationCostUpdate = document.getElementById("reservation-cost");
   reservationCostUpdate.textContent=reservationCost;
 }
