@@ -86,7 +86,7 @@ document.getElementById("imagesItems").style.height = "100%";
       ? carouseItemElement.classList.add("carousel-item", "h-100", "active")
       : carouseItemElement.classList.add("carousel-item", "h-100");
 
-    carouseItemElement.innerHTML = `<img src=${images} class="w-100 h-100" alt="" style="object-fit:cover">`;
+    carouseItemElement.innerHTML = `<img src=${images} class="w-100 h-100 activity-card-image" alt="" style="object-fit:cover">`;
     // console.log(carouseItemElement);
 
     carouselItemParent.append(carouseItemElement);
