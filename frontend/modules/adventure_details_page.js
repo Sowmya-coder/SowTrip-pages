@@ -38,12 +38,42 @@ function addAdventureDetailsToDOM(adventure) {
   // 1. Add the details of the adventure to the HTML DOM
   let adventureHeading = document.getElementById("adventure-name");
   let adventureSubHeading = document.getElementById("adventure-subtitle");
-  let photoGallery = document.getElementById("photo-gallery");
   let adventureContent = document.getElementById("adventure-content");
   console.log(adventure);
   adventureHeading.innerText = adventure.name;
   adventureSubHeading.innerText = adventure.subtitle;
+//   photoGallery.innerHTML = `<div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
+//   <div class="carousel-inner" id="imagesItems">
+//   </div>
+//   <button class="carousel-control-prev" type="button" data-bs-slide="prev" data-bs-target="#imageCarousel">
+//     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+//     <span class="visually-hidden">Previous</span>
+//   </button>
+//   <button class="carousel-control-next" type="button" data-bs-slide="prev" data-bs-target="#imageCarousel">
+//     <span class="carousel-control-next-icon" aria-hidden="true"></span>
+//     <span class="visually-hidden">Next</span>
+//   </button>
+// </div>`;
+  
+  adventureContent.innerText = adventure.content;
+  let reservationPerHeadCost = document.getElementById("reservation-person-cost");
+ reservationPerHeadCost.textContent = adventure.costPerHead;
+}
+
+//Implementation of bootstrap gallery component
+function addBootstrapPhotoGallery(images) {
+  // TODO: MODULE_ADVENTURE_DETAILS
+  // 1. Add the bootstrap carousel to show the Adventure images
+  // console.log(images);
+  let photoGallery = document.getElementById("photo-gallery");
+
   photoGallery.innerHTML = `<div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#imageCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#imageCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#imageCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+
   <div class="carousel-inner h-100" id="imagesItems">
   </div>
   <button class="carousel-control-prev" type="button" data-bs-slide="prev" data-bs-target="#imageCarousel">
@@ -55,15 +85,9 @@ function addAdventureDetailsToDOM(adventure) {
     <span class="visually-hidden">Next</span>
   </button>
 </div>`;
-  
-  adventureContent.innerText = adventure.content;
-}
-
-//Implementation of bootstrap gallery component
-function addBootstrapPhotoGallery(images) {
-  // TODO: MODULE_ADVENTURE_DETAILS
-  // 1. Add the bootstrap carousel to show the Adventure images
-  console.log(images);
+photoGallery.style.height = "600px";
+document.getElementById("imageCarousel").style.height = "100%";
+document.getElementById("imagesItems").style.height = "100%";
 
   const carouselItemParent = document.getElementById("imagesItems");  
   // images.forEach((images, idx) => {
@@ -89,16 +113,25 @@ return carouselItemParent;
 function conditionalRenderingOfReservationPanel(adventure) {
   // TODO: MODULE_RESERVATIONS
   // 1. If the adventure is already reserved, display the sold-out message.
-  // if(adventure.reservation==true){
-
-  // }
+    let soldOutId = document.getElementById("reservation-panel-sold-out");
+    let reservationAvailable = document.getElementById("reservation-panel-available");
+  if(adventure.reserved==false){
+    soldOutId.style.display = "none";
+  }else{
+    reservationAvailable.style.display = "none";
+  }
 }
+
+ 
 
 //Implementation of reservation cost calculation based on persons
 function calculateReservationCostAndUpdateDOM(adventure, persons) {
   // TODO: MODULE_RESERVATIONS
   // 1. Calculate the cost based on number of persons and update the reservation-cost field
-
+ let reservationPerHeadCost = document.getElementById("reservation-person-cost").textContent;
+  let reservationCost = reservationPerHeadCost * persons;
+  let reservationCostUpdate = document.getElementById("reservation-cost");
+  reservationCostUpdate.textContent=reservationCost;
 }
 //Implementation of reservation form submission
 function captureFormSubmit(adventure) {
