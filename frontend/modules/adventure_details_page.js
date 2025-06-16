@@ -44,6 +44,7 @@ function addAdventureDetailsToDOM(adventure) {
   adventureContent.textContent = adventure.content;
   let reservationPerHeadCost = document.getElementById("reservation-person-cost");
  reservationPerHeadCost.textContent = adventure.costPerHead;
+ addBootstrapPhotoGallery(adventure.images);
 }
 
 //Implementation of bootstrap gallery component
