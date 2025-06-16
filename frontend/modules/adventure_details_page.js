@@ -39,7 +39,7 @@ function addAdventureDetailsToDOM(adventure) {
   let adventureHeading = document.getElementById("adventure-name");
   let adventureSubHeading = document.getElementById("adventure-subtitle");
   let adventureContent = document.getElementById("adventure-content");
-  console.log(adventure);
+  // console.log(adventure);
   adventureHeading.innerText = adventure.name;
   adventureSubHeading.innerText = adventure.subtitle;
 //   photoGallery.innerHTML = `<div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
