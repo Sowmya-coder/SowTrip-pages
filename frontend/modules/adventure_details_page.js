@@ -102,7 +102,7 @@ function conditionalRenderingOfReservationPanel(adventure) {
     let reservationPerHeadCost = document.getElementById("reservation-person-cost");
 
  
-  if(adventure.reserved==false){
+  if(adventure.available){
     soldOutId.style.display = "none";
     reservationPerHeadCost.style.display = "block";
     reservationAvailable.style.display = "block";
