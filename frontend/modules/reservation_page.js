@@ -26,7 +26,7 @@ function addReservationToTable(reservations) {
   try{
   let noReservationBanner = document.getElementById("no-reservation-banner");
   let reservationTableBody = document.getElementById("reservation-table");
-  if (reservations.length > 0) {
+  if (reservations.length >= 0) {
     noReservationBanner.style.display = "none";
     reservationTableParent.style.display = "block";
   
