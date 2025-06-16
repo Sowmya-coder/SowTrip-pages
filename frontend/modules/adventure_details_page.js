@@ -99,14 +99,16 @@ function conditionalRenderingOfReservationPanel(adventure) {
   // 1. If the adventure is already reserved, display the sold-out message.
     let soldOutId = document.getElementById("reservation-panel-sold-out");
     let reservationAvailable = document.getElementById("reservation-panel-available");
-  let reservationPerHeadCost = document.getElementById("reservation-person-cost");
+    let reservationPerHeadCost = document.getElementById("reservation-person-cost");
 
  
   if(adventure.reserved==false){
     soldOutId.style.display = "none";
+    reservationPerHeadCost.style.display = "block";
     reservationPerHeadCost.textContent = adventure.costPerHead;
   }else{
     reservationAvailable.style.display = "none";
+    soldOutId.style.display = "none";
     // reservationPerHeadCost.textContent =  0;
 
   }
@@ -129,7 +131,7 @@ function captureFormSubmit(adventure) {
   // TODO: MODULE_RESERVATIONS
   // 1. Capture the query details and make a POST API call using fetch() to make the reservation
   // 2. If the reservation is successful, show an alert with "Success!" and refresh the page. If the reservation fails, just show an alert with "Failed!".
-
+try{
 const reserveForm=document.querySelector("#myForm");
   reserveForm.addEventListener("submit", async function(event){
     event.preventDefault();
@@ -141,7 +143,7 @@ const reserveForm=document.querySelector("#myForm");
     adventure: adventure.id,
   });
 console.log(bodyString);
-    try{
+    
   const rawAPIData=await fetch(config.backendEndpoint+"/reservations/new ", {
      method:"POST",
     body: bodyString,
