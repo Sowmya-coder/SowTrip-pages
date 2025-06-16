@@ -81,10 +81,10 @@ describe("Adventure Detail Page Tests", function () {
       costPerHead: 1000,
     };
     addAdventureDetailsToDOM(adventure);
-    expect(document.getElementById("adventure-name").innerHTML).toBe(
+    expect(document.getElementById("adventure-name").innerText).toBe(
       adventure.name
     );
-    expect(document.getElementById("adventure-subtitle").innerHTML).toBe(
+    expect(document.getElementById("adventure-subtitle").innerText).toBe(
       adventure.subtitle
     );
     expect(document.getElementsByClassName("activity-card-image").length).toBe(
