@@ -58,10 +58,10 @@ function addReservationToTable(reservations) {
                             <td scope="col">${reservations[i].name}</td>
                             <td scope="col">${reservations[i].adventure}</td>
                             <td scope="col">${reservations[i].person}</td>
-                            <td >${formatDate}</td>
-                            <td style="gap:5px">${reservations[i].price}</td>
-                            <td style="gap:5px">${formatTime}</td>
-                            <td style="display:flex; gap:5px"><div class="reservation-visit-button"> <a href = "../detail?adventure=${reservations[i].adventure}">View Adventure</a></div></td>                
+                            <td>${formatDate}</td>
+                            <td>${reservations[i].price}</td>
+                            <td>${formatTime}</td>
+                            <td style="display:flex; gap:5px"><div class="reservation-visit-button"> <a href = "../detail/?adventure=${reservations[i].adventure}">View Adventure</a></div></td>                
                         </tr>`
   }   
 }
