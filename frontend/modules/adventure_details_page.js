@@ -142,15 +142,14 @@ const reserveForm=document.querySelector("#myForm");
     person: reserveFormElements["person"].value,
     adventure: adventure.id,
   });
-console.log(bodyString);
-    
+
   const rawAPIData=await fetch(config.backendEndpoint+"/reservations/new ", {
      method:"POST",
     body: bodyString,
   headers: {
       'Content-type': 'application/json; charset=UTF-8',
     }
-    });
+  });
 
     if(rawAPIData.ok){
     alert('successful!');
@@ -159,12 +158,12 @@ console.log(bodyString);
     let data = await rawAPIData.json();
     alert(`Failed-${data.message}`);
   }
+});
 }
   catch(err){
-    console.log(err);
+    // console.log(err);
     alert('Failure - fetch call message is error');
-  }
-    });
+}
 }
 
 //Implementation of success banner after reservation
