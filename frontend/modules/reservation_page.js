@@ -4,9 +4,14 @@ import config from "../conf/index.js";
 async function fetchReservations() {
   // TODO: MODULE_RESERVATIONS
   // 1. Fetch Reservations by invoking the REST API and return them
+  try{
   let rawData = await fetch(config.backendEndpoint+"/reservations/");
   let reservationData = await rawData.json();
   return reservationData;
+  }
+  catch(err){
+    return null;
+  }
   // Place holder for functionality to work in the Stubs
   // return null;
 }
@@ -18,7 +23,7 @@ function addReservationToTable(reservations) {
 
   //Conditionally render the no-reservation-banner and reservation-table-parent
 
-  console.log(reservations);
+  try{
   let noReservationBanner = document.getElementById("no-reservation-banner");
   let reservationTableBody = document.getElementById("reservation-table");
   if (reservations != []){
@@ -38,8 +43,6 @@ function addReservationToTable(reservations) {
         const month = givenTime.toLocaleString("default", { month: "long" });
         const year = givenTime.getFullYear();
         let formatTime = `${day} ${month} ${year}, ${time}`;
-
-      
       reservationTableBody.innerHTML += ` <tr>
                             <td scope="col">${reservations[i].id}</td>
                             <td scope="col">${reservations[i].name}</td>
@@ -50,10 +53,11 @@ function addReservationToTable(reservations) {
                             <td style="gap:5px">${formatTime}</td>
                             <td style="display:flex; gap:5px"><div class="reservation-visit-button"> <a href = "../detail?adventure=${reservations[i].adventure}">View Adventure</a></div></td>                
                         </tr>`
-
-
-    
   }
+}
+catch(err){
+  return null;
+}
 
 
   /*
