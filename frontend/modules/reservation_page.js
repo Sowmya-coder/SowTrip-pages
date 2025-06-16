@@ -29,10 +29,11 @@ function addReservationToTable(reservations) {
   // 1. Add the Reservations to the HTML DOM so that they show up in the table
 
   //Conditionally render the no-reservation-banner and reservation-table-parent
-
-  try{
-  let noReservationBanner = document.getElementById("no-reservation-banner");
   let reservationTableBody = document.getElementById("reservation-table");
+  let noReservationBanner = document.getElementById("no-reservation-banner");
+  let reservationTableParent = document.getElementById("reservation-table-parent");
+  try{
+  
  if (reservations.length > 0) {
       noReservationBanner.style.display = "none";
       reservationTableParent.style.display = "block";
