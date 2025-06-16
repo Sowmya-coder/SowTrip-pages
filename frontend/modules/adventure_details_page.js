@@ -39,23 +39,9 @@ function addAdventureDetailsToDOM(adventure) {
   let adventureHeading = document.getElementById("adventure-name");
   let adventureSubHeading = document.getElementById("adventure-subtitle");
   let adventureContent = document.getElementById("adventure-content");
-  // console.log(adventure);
-  adventureHeading.innerText = adventure.name;
-  adventureSubHeading.innerText = adventure.subtitle;
-//   photoGallery.innerHTML = `<div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
-//   <div class="carousel-inner" id="imagesItems">
-//   </div>
-//   <button class="carousel-control-prev" type="button" data-bs-slide="prev" data-bs-target="#imageCarousel">
-//     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-//     <span class="visually-hidden">Previous</span>
-//   </button>
-//   <button class="carousel-control-next" type="button" data-bs-slide="prev" data-bs-target="#imageCarousel">
-//     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-//     <span class="visually-hidden">Next</span>
-//   </button>
-// </div>`;
-  
-  adventureContent.innerText = adventure.content;
+  adventureHeading.textContent = adventure.name;
+  adventureSubHeading.textContent = adventure.subtitle;  
+  adventureContent.textContent = adventure.content;
   let reservationPerHeadCost = document.getElementById("reservation-person-cost");
  reservationPerHeadCost.textContent = adventure.costPerHead;
 }
@@ -90,22 +76,21 @@ document.getElementById("imageCarousel").style.height = "100%";
 document.getElementById("imagesItems").style.height = "100%";
 
   const carouselItemParent = document.getElementById("imagesItems");  
-  // images.forEach((images, idx) => {
-    for(let i=0;i<images.length;i++){
+  images.forEach((images, idx) => {
+    // for(let i=0;i<images.length;i++){
     const carouseItemElement = document.createElement("div");
 
     // Set as active if id is 0 i.e, first element
-    // idx === 0
-    i===0
+    idx === 0
       ? carouseItemElement.classList.add("carousel-item", "h-100", "active")
       : carouseItemElement.classList.add("carousel-item", "h-100");
 
-    carouseItemElement.innerHTML = `<img src=${images[i]} class="w-100 h-100" alt="" style="object-fit:cover">`;
+    carouseItemElement.innerHTML = `<img src=${images} class="w-100 h-100" alt="" style="object-fit:cover">`;
     // console.log(carouseItemElement);
 
     carouselItemParent.append(carouseItemElement);
-  // });
-    }
+  });
+    // }
 return carouselItemParent;
 }
 
