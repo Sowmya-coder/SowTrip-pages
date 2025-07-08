@@ -26,9 +26,9 @@ async function fetchAdventures(cityName) {
     // let cityName = getCityFromURL(search);
     let rawData = await fetch(config.backendEndpoint + "/adventures?city="+cityName );
     let fetchingData = await rawData.json();
-    // console.log(fetchingData);
+    console.log(fetchingData);
     addAdventureToDOM(fetchingData);
-    // return fetchingData;
+    return fetchingData;
   }catch(err){
     return null;
   } 
@@ -40,12 +40,13 @@ function addAdventureToDOM(adventures) {
   // TODO: MODULE_ADVENTURES
   // 1. Populate the Adventure Cards and insert those details into the DOM
    let inputData = document.getElementById("data");
-   console.log(inputData);
+  //  console.log(inputData);
+    // inputData.innerHTML = '';
   for(let i=0;i<adventures.length;i++){
     
    let adventureCard = `
                 <div class="col-xl-3 col-lg-4 col-md-6 col-12 g-1 mb-4"><a href="detail/?adventure=${adventures[i].id}" >  
-                <div class="card activity-card card-img-top" style="width: 18rem;">
+                <div class="card activity-card card-img-top h-100" >
                     <img src="${adventures[i].image}" class="card-img-top" alt="${adventures[i].name}">
                     <div class="category-banner">${adventures[i].category}</div>
                 <div class="card-body">
@@ -87,13 +88,14 @@ async function addNewButton (){
 function filterByDuration(list, low, high) {
   // TODO: MODULE_FILTERS
   // 1. Filter adventures based on Duration and return filtered list
-
+  console.log(list, low, high);
   let filterByDurationValue = list.filter((ele)=>(ele.duration>=low)&&(ele.duration<=high));
+  console.log(filterByDurationValue);
   return filterByDurationValue;
 }
-let low=2;
-let high=8;
-let category=['party'];
+// let low=2;
+// let high=8;
+// let category=['party'];
 
 //Implementation of filtering by category which takes in a list of adventures, list of categories to be filtered upon and returns a filtered list of adventures.
 function filterByCategory(list, categoryList) {
@@ -118,28 +120,28 @@ function filterFunction(list, filters) {
   // TODO: MODULE_FILTERS
   // 1. Handle the 3 cases detailed in the comments above and return the filtered list of adventures
   // 2. Depending on which filters are needed, invoke the filterByDuration() and/or filterByCategory() methods
-  if ((filters.duration!="")&&(filters.category!=[])){
+  if ((filters.duration!="")&&(filters.category.length>0)){
         let choice = filters.duration.split("-");
-        let filteredByCategoryArray = filterByDuration(list,parseInt(choice[0]),parseInt(choice[0]));
+        let filteredByCategoryArray = filterByDuration(list,parseInt(choice[0]),parseInt(choice[1]));
         
-        let filteredByDurationArray = filterByCategory(list,category);
+        let filteredByDurationArray = filterByCategory(list,filters.category);
         let finalArray = filteredByDurationArray.filter((ele)=>filteredByCategoryArray.includes(ele));
         return finalArray;
 
     }
     else if (filters.duration!=""){
        let choice = filters.duration.split("-");
-        let filteredByCategoryArray = filterByDuration(list,parseInt(choice[0]),parseInt(choice[0]));
+        let filteredByCategoryArray = filterByDuration(list,parseInt(choice[0]),parseInt(choice[1]));
         return filteredByCategoryArray;
     }
-    else if (filters.category!=[]){
-        return filterByCategory(list,category);
+    else if (filters.category.length>0){
+        return filterByCategory(list,filters.category);
     }else {
         return list;
     }
 
   // Place holder for functionality to work in the Stubs
-  // return list;
+  return list;
 }
 
 
